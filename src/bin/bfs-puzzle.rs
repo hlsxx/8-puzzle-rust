@@ -104,7 +104,7 @@ impl Puzzle {
             queue,
             visited: VecDeque::new(),
             final_vector,
-            nodes_count: 0
+            nodes_count: 1
         }
     }
 
@@ -113,6 +113,7 @@ impl Puzzle {
         println!("Searching for solution...");
 
         while let Some(current_node) = self.queue.pop_front().as_mut() {
+            self.nodes_count += 1;
             self.visited.push_back(current_node.clone());
 
             current_node.move_right();
@@ -129,8 +130,6 @@ impl Puzzle {
                     self.queue.push_back(current_child.clone());
                 }
             }
-
-            self.nodes_count += 1;
         }
 
         Err("Solution not found :(".to_string())

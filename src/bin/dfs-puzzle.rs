@@ -104,7 +104,7 @@ impl Puzzle {
             stack,
             visited: Vec::new(),
             final_vector,
-            nodes_count: 0
+            nodes_count: 1
         }
     }
 
@@ -113,6 +113,7 @@ impl Puzzle {
         println!("Searching for solution...");
 
         while let Some(current_node) = self.stack.pop().as_mut() {
+            self.nodes_count += 1;
             self.visited.push(current_node.clone());
 
             current_node.move_right();
@@ -129,8 +130,6 @@ impl Puzzle {
                     self.stack.push(current_child.clone());
                 }
             }
-
-            self.nodes_count += 1;
         }
 
         Err("Solution not found :(".to_string())
