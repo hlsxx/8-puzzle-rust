@@ -159,10 +159,6 @@ fn trace_solution(mut node: Node) {
 
 fn main() {
     let initial_vector: Vec<usize> = vec![
-        //1, 0, 3,
-        //4, 2, 5,
-        //6, 7, 8
-
         1, 2, 3,
         0, 4, 6,
         7, 5, 8
